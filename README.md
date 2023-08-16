@@ -1,58 +1,94 @@
-# springboot-graphql
-springboot and graph-query language
-Spring Boot and Graphql
-Main Information
+# Spring Boot and Graphql
 
-📖 Information
-Graphql is a query language to handle crud and other operations and is an alternative to REST for Web APIs.
-To handle with all opeations, a file extension of .graphql should be defined.
-All processes of query and mutation should becovered from GraphQLQueryResolver and GraphQLMutationResolver
-🔨 Run the App
-1 ) Install GraphiQL from this website (https://www.electronjs.org/apps/graphiql)
+<img src="screenshots/springbootgraphql.PNG" alt="Main Information" width="800" height="400">
 
-2 ) Check if all maven dependencies are installed by using this code  mvn clean install 
+### 📖 Information
 
-3 ) Add all relevant graphql dependencies in pom.xml
+<ul style="list-style-type:disc">
+  <li> <b>Graphql</b> is a query language to handle crud and other operations and is an alternative to REST for Web APIs. </li>
+  <li> To handle with all opeations, a file extension of <b>.graphql</b> should be defined. </li>
+  <li> All processes of <b>query</b> and <b>mutation</b> should becovered from <b>GraphQLQueryResolver</b> and <b>GraphQLMutationResolver</b> </li>
+</ul>
 
-4 ) Define a query endpoint URL in the GraphiQL (http://localhost:8081/graphql)
+### 🔨 Run the App
 
-5 ) Run the GraphiQL after defining queries with its variable in its essential parts of the program
+<b>1 )</b> Install GraphiQL from this website (<code>https://www.electronjs.org/apps/graphiql</code>)
 
-6 ) Show its result in h2 database after connecting with this url (http://localhost:8081/h2-console/)
+<b>2 )</b> Check if all <b>maven dependencies</b> are installed by using this code <code> mvn clean install </code>
 
-Table
-Entity	Query Information	Query	Query Variables
-Hospital
-Get All Hospital List	
+<b>3 )</b> Add all relevant graphql dependencies in pom.xml
+
+<b>4 )</b> Define a <b>query endpoint URL</b> in the <b>GraphiQL</b> (<code>http://localhost:8081/graphql</code>)
+
+<b>5 )</b> Run the <b>GraphiQL</b> after defining queries with its variable in its essential parts of the program
+
+<b>6 )</b> Show its result in <b>h2</b> database after connecting with this url (<code>http://localhost:8081/h2-console/</code>)
+
+### Table
+
+<table style="border: 0px;">
+  <tr>
+     <td align="center" colspan="1"> <b>Entity</b> </td>
+     <td align="center"> <b>Query Information</b> </td>
+     <td align="center"> <b>Query</b> </td>
+     <td align="center"> <b>Query Variables</b> </td>
+  </tr>
+  <tr>
+     <td align="center" rowspan="6"> <b>Hospital</b> </td>
+  </tr>
+  <tr>
+      <td align="center">Get All Hospital List</td>
+      <td align="center">
+           <code>
                {
                  hospitals {
                      id
                      name
                  }
                }
-           	No Query Variable
-Get Hospital by Id	
+           </code>
+      </td>
+      <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+      <td align="center">Get Hospital by Id</td>
+      <td align="center">
+        <code>
             query{
               hospital(id:3) {
                 id
                 name
               }
             }
-        	No Query Variable
-Add New Hospital	
+        </code>
+      </td>
+      <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+      <td align="center">Add New Hospital</td>
+      <td align="center">
+        <code>
             mutation newHospital($hospitalInput: HospitalInput!) {
               newHospital(hospital: $hospitalInput){
                 name
               }
             }
-        	
+        </code>      
+      </td>
+      <td align="center">
+        <code>
             {
               "hospitalInput": {
                 "name": "Hospital 6"
               }
             }
-        
-Update Hospital By Id	
+        </code>     
+      </td>
+  </tr>
+  <tr>
+      <td align="center">Update Hospital By Id</td>
+      <td align="center">
+        <code>
             mutation {
               updateHospital (
                 id: 6
@@ -62,14 +98,28 @@ Update Hospital By Id
                   name
                 }
             }
-        	No Query Variable
-Delete Hospital by Id	
+        </code>
+      </td>
+      <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+        <td align="center">Delete Hospital by Id</td>
+        <td align="center">
+          <code>
               mutation {
                 deleteHospital (id: 6)
               }
-          	No Query Variable
-Department
-Get All Department list with showing Hospital and Doctor	
+          </code>
+        </td>
+        <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+     <td align="center" rowspan="13"> <b>Department</b> </td>
+  </tr>
+  <tr>
+     <td align="center"> Get All Department list with showing Hospital and Doctor </td>
+     <td align="center">
+        <code>
             {
               departments{
                 id
@@ -89,8 +139,14 @@ Get All Department list with showing Hospital and Doctor
                 }
               }
             }
-        	No Query Variable
-Get All Department list with showing only Doctor	
+        </code>
+     </td>
+     <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+     <td align="center"> Get All Department list with showing only Doctor</td>
+     <td align="center">
+        <code>
             {
               departments{
                 id
@@ -105,8 +161,14 @@ Get All Department list with showing only Doctor
                 }
               }
             }
-        	No Query Variable
-Get All Department list with showing only Hospital	
+        </code>
+     </td>
+     <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+     <td align="center"> Get All Department list with showing only Hospital</td>
+     <td align="center">
+        <code>
             {
               departments{
                 id
@@ -117,16 +179,28 @@ Get All Department list with showing only Hospital
                 }
               }
             }
-        	No Query Variable
-Get All Department list with showing its information	
+        </code>
+     </td>
+     <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+       <td align="center"> Get All Department list with showing its information</td>
+       <td align="center">
+          <code>
               {
                 departments{
                   id
                   name
                 }
               }
-          	No Query Variable
-Get Department by Id with showing Hospital and Doctor	
+          </code>
+       </td>
+       <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+       <td align="center"> Get Department by Id with showing Hospital and Doctor </td>
+       <td align="center">
+          <code>
               query {
                 department(id:6){
                   id
@@ -146,8 +220,14 @@ Get Department by Id with showing Hospital and Doctor
                   }
                 }
               }
-          	No Query Variable
-Get Department by Id with showing Hospital	
+          </code>
+       </td>
+       <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+        <td align="center"> Get Department by Id with showing Hospital </td>
+        <td align="center">
+            <code>
                 query {
                   department(id:6){
                     id
@@ -158,8 +238,14 @@ Get Department by Id with showing Hospital
                     }
                   }
                 }
-            	No Query Variable
-Get Department by Id with showing Doctor	
+            </code>
+        </td>
+        <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+        <td align="center"> Get Department by Id with showing Doctor </td>
+        <td align="center">
+              <code>
                   query {
                     department(id:6){
                       id
@@ -175,24 +261,42 @@ Get Department by Id with showing Doctor
                       }
                     }
                   }
-              	No Query Variable
-Get Department by Id with showing its information	
+              </code>
+        </td>
+        <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+        <td align="center"> Get Department by Id with showing its information </td>
+        <td align="center">
+            <code>
                 query {
                   department(id:6){
                     id
                     name
                   }
                 }
-            	No Query Variable
-Get Department by Id with showing its information	
+            </code>
+        </td>
+        <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+        <td align="center"> Get Department by Id with showing its information </td>
+        <td align="center">
+          <code>
               query {
                 department(id:6){
                   id
                   name
                 }
               }
-          	No Query Variable
-Add New Department	
+          </code>
+        </td>
+        <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+        <td align="center"> Add New Department </td>
+        <td align="center">
+            <code>
                 mutation newDepartment($departmentInput: DepartmentInput!) {
                   newDepartment(department: $departmentInput){
                     name
@@ -201,35 +305,61 @@ Add New Department
                     }
                   }
                 }
-            	
+            </code>
+        </td>
+        <td align="center">
+            <code>
                 {
                   "departmentInput": {
                     "name": "Department 10",
                     "hospitalId": 3
                   }
                 }
-            
-Update Department By Id	
+            </code>
+        </td>
+  </tr>
+  <tr>
+      <td align="center"> Update Department By Id</td>
+      <td align="center">
+          <code>
               mutation updateDepartment($departmentInput: DepartmentInput!) {
                 updateDepartment(id: 10,department: $departmentInput){
                   name
                 }
               }
-          	
+          </code>
+      </td>
+      <td align="center">
+          <code>
               {
                 "departmentInput": {
                   "name": "Department 10 Update",
                   "hospitalId": 3
                 }
               }
-          
-Delete Department By Id	
+          </code>
+      </td>
+  </tr>
+  <tr>
+    <td align="center"> Delete Department By Id</td>
+    <td align="center">
+        <code>
             mutation {
               deleteDepartment (id: 10)
             }
-        	No Query Variable
-Doctor
-Get All Doctor list with showing Department and Hospital	
+        </code>
+    </td>
+    <td align="center">
+        No Query Variable
+    </td>
+  </tr>
+  <tr>
+     <td align="center" rowspan="14"> <b>Doctor</b> </td>
+  </tr>
+  <tr>
+       <td align="center"> Get All Doctor list with showing Department and Hospital </td>
+       <td align="center">
+          <code>
               {
                 doctors{
                   id
@@ -249,8 +379,14 @@ Get All Doctor list with showing Department and Hospital
                   }
                 }
               }
-          	No Query Variable
-Get All Doctor list with showing only Hospital	
+          </code>
+       </td>
+       <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+        <td align="center"> Get All Doctor list with showing only Hospital</td>
+        <td align="center">
+            <code>
                 {
                   doctors{
                     id
@@ -266,8 +402,14 @@ Get All Doctor list with showing only Hospital
                     }
                   }
                 }
-            	No Query Variable
-Get All Doctor list with showing only Department	
+            </code>
+        </td>
+        <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+      <td align="center"> Get All Doctor list with showing only Department</td>
+      <td align="center">
+          <code>
               {
                 doctors{
                   id
@@ -283,8 +425,14 @@ Get All Doctor list with showing only Department
                   }
                 }
               }
-          	No Query Variable
-Get All Doctor list with showing its information	
+          </code>
+      </td>
+      <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+        <td align="center"> Get All Doctor list with showing its information</td>
+        <td align="center">
+            <code>
                 {
                   doctors{
                     id
@@ -296,8 +444,14 @@ Get All Doctor list with showing its information
                     birthday
                   }
                 }
-            	No Query Variable
-Get Doctor by Id with showing Department and Hospital	
+            </code>
+        </td>
+        <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+          <td align="center"> Get Doctor by Id with showing Department and Hospital</td>
+          <td align="center">
+              <code>
                   {
                     doctor(id : 2){
                       id
@@ -317,8 +471,14 @@ Get Doctor by Id with showing Department and Hospital
                       }
                     }
                   }
-              	No Query Variable
-Get Doctor by Id with showing Hospital	
+              </code>
+          </td>
+          <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+          <td align="center"> Get Doctor by Id with showing Hospital</td>
+          <td align="center">
+              <code>
                   {
                     doctor(id : 2){
                       id
@@ -334,8 +494,14 @@ Get Doctor by Id with showing Hospital
                       }
                     }
                   }
-              	No Query Variable
-Get Doctor by Id with showing Department	
+              </code>
+          </td>
+          <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+          <td align="center"> Get Doctor by Id with showing Department </td>
+          <td align="center">
+              <code>
                   {
                     doctor(id : 2){
                       id
@@ -351,8 +517,14 @@ Get Doctor by Id with showing Department
                       }
                     }
                   }
-              	No Query Variable
-Get Doctor by Id with showing its information	
+              </code>
+          </td>
+          <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+        <td align="center"> Get Doctor by Id with showing its information </td>
+        <td align="center">
+            <code>
                 {
                   doctor(id : 2){
                     id
@@ -364,8 +536,14 @@ Get Doctor by Id with showing its information
                     birthday
                   }
                 }
-            	No Query Variable
-Get Doctor by Filter covering that Doctor has a surgeon, is greater than the age of 30 and its salary is greater than 12K	
+            </code>
+        </td>
+        <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+      <td align="center"> Get Doctor by Filter covering that Doctor has a surgeon, is greater than the age of 30 and its salary is greater than 12K </td>
+      <td align="center">
+          <code>
               {
                 doctorsWithFilter(filter: {
                   position: {
@@ -390,8 +568,14 @@ Get Doctor by Filter covering that Doctor has a surgeon, is greater than the age
                   birthday
                 }
               }
-          	No Query Variable
-Get Doctor by Filter covering that its birthdate ranges from "1980-01-01" to "1990-05-01"	
+          </code>
+      </td>
+      <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+        <td align="center"> Get Doctor by Filter covering that its birthdate ranges from "1980-01-01" to "1990-05-01" </td>
+        <td align="center">
+            <code>
                 {
                   doctorsWithFilter(filter: {
                     birthday:{
@@ -408,8 +592,14 @@ Get Doctor by Filter covering that its birthdate ranges from "1980-01-01" to "19
                     birthday
                   }
                 }
-            	No Query Variable
-Add New Doctor	
+            </code>
+        </td>
+        <td align="center"> No Query Variable </td>
+  </tr>
+  <tr>
+      <td align="center"> Add New Doctor </td>
+      <td align="center">
+          <code>
               mutation newDepartment($doctorInput: DoctorInput!) {
                 newDoctor(doctor: $doctorInput){
                   firstName
@@ -428,7 +618,10 @@ Add New Doctor
                   }
                 }
               }
-          	
+          </code>
+      </td>
+      <td align="center">
+        <code>
             {
               "doctorInput": {
                 "firstName": "FirstName üğişçöı",
@@ -441,8 +634,13 @@ Add New Doctor
                 "hospitalId" : 2
               }
             }
-        
-Update Doctor by Id	
+        </code>     
+      </td>
+  </tr>
+  <tr>
+        <td align="center"> Update Doctor by Id </td>
+        <td align="center">
+            <code>
                 mutation updateDoctor($doctorInput: DoctorInput!) {
                   updateDoctor(id: 8,doctor: $doctorInput){
                     firstName
@@ -459,7 +657,10 @@ Update Doctor by Id
                     }
                   }
                 }
-            	
+            </code>
+        </td>
+        <td align="center">
+          <code>
               {
                 "doctorInput": {
                   "firstName": "FirstName üğişçöı Update",
@@ -472,11 +673,94 @@ Update Doctor by Id
                   "hospitalId" : 1
                 }
               }
-          
-Delete Doctor by Id	
+          </code>     
+        </td>
+  </tr>
+  <tr>
+      <td align="center"> Delete Doctor by Id </td>
+      <td align="center">
+          <code>
               mutation {
                 deleteDoctor (id: 8)
               }
-          	No Query Variable
-Screenshots
-Click here to show the screenshots of project
+          </code>
+      </td>
+      <td align="center"> No Query Variable </td>
+  </tr>
+</table>
+
+### Screenshots
+
+<details>
+<summary>Click here to show the screenshots of project</summary>
+    <p> Figure 1 </p>
+    <img src ="screenshots/1.PNG">
+    <p> Figure 2 </p>
+    <img src ="screenshots/2.PNG">
+    <p> Figure 3 </p>
+    <img src ="screenshots/3.PNG">
+    <p> Figure 4 </p>
+    <img src ="screenshots/4.PNG">
+    <p> Figure 5 </p>
+    <img src ="screenshots/5.PNG">
+    <p> Figure 6 </p>
+    <img src ="screenshots/6.PNG">
+    <p> Figure 7 </p>
+    <img src ="screenshots/7.PNG">
+    <p> Figure 8 </p>
+    <img src ="screenshots/8.PNG">
+    <p> Figure 9 </p>
+    <img src ="screenshots/9.PNG">
+    <p> Figure 10 </p>
+    <img src ="screenshots/10.PNG">
+    <p> Figure 11 </p>
+    <img src ="screenshots/11.PNG">
+    <p> Figure 12 </p>
+    <img src ="screenshots/12.PNG">
+    <p> Figure 13 </p>
+    <img src ="screenshots/13.PNG">
+    <p> Figure 14 </p>
+    <img src ="screenshots/14.PNG">
+    <p> Figure 15 </p>
+    <img src ="screenshots/15.PNG">
+    <p> Figure 16 </p>
+    <img src ="screenshots/16.PNG">
+    <p> Figure 17 </p>
+    <img src ="screenshots/17.PNG">
+    <p> Figure 18 </p>
+    <img src ="screenshots/18.PNG">
+    <p> Figure 19 </p>
+    <img src ="screenshots/19.PNG">
+    <p> Figure 20 </p>
+    <img src ="screenshots/20.PNG">
+    <p> Figure 21 </p>
+    <img src ="screenshots/21.PNG">
+    <p> Figure 22 </p>
+    <img src ="screenshots/22.PNG">
+    <p> Figure 23 </p>
+    <img src ="screenshots/23.PNG">
+    <p> Figure 24 </p>
+    <img src ="screenshots/24.PNG">
+    <p> Figure 25 </p>
+    <img src ="screenshots/25.PNG">
+    <p> Figure 26 </p>
+    <img src ="screenshots/26.PNG">
+    <p> Figure 27 </p>
+    <img src ="screenshots/27.PNG">
+    <p> Figure 28 </p>
+    <img src ="screenshots/28.PNG">
+    <p> Figure 29 </p>
+    <img src ="screenshots/29.PNG">
+    <p> Figure 30 </p>
+    <img src ="screenshots/30.PNG">
+    <p> Figure 31 </p>
+    <img src ="screenshots/31.PNG">
+    <p> Figure 32 </p>
+    <img src ="screenshots/32.PNG">
+    <p> Figure 33 </p>
+    <img src ="screenshots/33.PNG">
+    <p> Figure 34 </p>
+    <img src ="screenshots/34.PNG">
+    <p> Figure 35 </p>
+    <img src ="screenshots/35.PNG">        
+</details>
